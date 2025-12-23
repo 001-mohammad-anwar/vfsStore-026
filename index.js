@@ -21,10 +21,33 @@ const errorMiddleware = require("./Moddleware/error-middleware");
 
 app.set("trust proxy", 1);
 
+// app.use(cors({
+//   origin: true,
+//   credentials: true
+// }));
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://vfs-store-frontend.vercel.app"
+];
+
 app.use(cors({
-  origin: true,
-  credentials: true
+  origin: function (origin, callback) {
+    // allow server-to-server or postman
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
 }));
+
+
+
 
 app.use(express.json());
 app.use(cookieParser());
