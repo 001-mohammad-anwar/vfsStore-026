@@ -56,7 +56,7 @@ const registration = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-      const { email, password, confirmPassword } = req.body;
+      const { email, password } = req.body;
        
       // Check if user exists
       const userExist = await User.findOne({ email });

@@ -191,7 +191,7 @@ const login = async (req, res) => {
 const logoutController = async (req, res) => {
   try {
     const userId = req.userID;
-    console.log("userID", userId);
+    // console.log("userID", userId);
     // Set cookie options
     const cookiesOption = {
       httpOnly: true,

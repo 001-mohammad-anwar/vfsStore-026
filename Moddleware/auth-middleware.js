@@ -61,8 +61,10 @@ const authMiddleware = async (req, res, next) => {
 
     // ✅ VERIFY TOKEN
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    
+    const userId = decoded.userId || decoded.id;
 
-    if (!decoded?.id) {
+    if (!userId) {
       return res.status(401).json({
         success: false,
         error: true,
@@ -71,7 +73,8 @@ const authMiddleware = async (req, res, next) => {
     }
 
     // ✅ FIND USER BY ID (BEST PRACTICE)
-    const user = await User.findById(decoded.id).select("-password");
+   const user = await User.findById(userId).select("-password");
+
 
     if (!user) {
       return res.status(401).json({
