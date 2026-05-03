@@ -486,12 +486,12 @@ const refreshToken = async (req, res) => {
       return res.status(400).json({ message: "Refresh token is required", error: true });
     }
 
-    console.log("Received Refresh Token:", refreshToken);
-    console.log("REFRESH_TOKEN_SECRET_KEY:", process.env.REFRESH_TOKEN_SECRET_KEY);
+    // console.log("Received Refresh Token:", refreshToken);
+    // console.log("REFRESH_TOKEN_SECRET_KEY:", process.env.REFRESH_TOKEN_SECRET_KEY);
 
     // Debug: Decode the token before verifying
     const decoded = jwt.decode(refreshToken, { complete: true });
-    console.log("Decoded Token:", decoded);
+    // console.log("Decoded Token:", decoded);
 
     // Verify token
     let verifyToken;

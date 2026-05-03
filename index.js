@@ -18,6 +18,8 @@ const cartRouter = require("./router/cartRouter");
 const Addressrouter = require("./router/address.route");
 const OrderRouter = require("./router/order-route");
 const errorMiddleware = require("./Moddleware/error-middleware");
+const venderRouter = require("./router/vender.router")
+const smartlygetCategory = require("./router/getSmartCategory")
 
 app.set("trust proxy", 1);
 
@@ -61,6 +63,8 @@ app.use("/api/product", productRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/address", Addressrouter);
 app.use("/api/order", OrderRouter);
+app.use("/api/vender" , venderRouter)
+app.use("/api/getCategorySmart" , smartlygetCategory)
 
 app.use(errorMiddleware);
 
