@@ -53,6 +53,17 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookieParser());
+// https://vfsstore-backend-apis.onrender.com
+
+app.get("/ping", (req,res) => {
+  try {
+      res.status(200).json({
+        message: "Server is awake"
+      })
+  } catch (error) {
+    console.log("error from ping", error)
+  }
+})
 
 app.use("/api/auth", routes);
 app.use("/api/user", userRoute);

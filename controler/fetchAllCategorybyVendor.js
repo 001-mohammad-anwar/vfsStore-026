@@ -2,6 +2,7 @@ const User = require("../moddel/user-model.js");
 const ServiceArea = require("../moddel/serviceAreamodel.js");
 const Vendor = require("../moddel/vender-model.js")
 const Category = require("../moddel/category_model.js");
+const Product = require("../moddel/product-model.js")
 
 const getCategoriesSmart = async (req, res) => {
   try {
@@ -9,7 +10,9 @@ const getCategoriesSmart = async (req, res) => {
 
     // 🔹 STEP 1: Sab categories fetch karo (UI ke liye)
     const allCategories = await Category.find();
-
+    const allProduct = await Product.find()
+    console.log(allProduct);
+   
     let vendors = [];
 
     // 🔹 STEP 2: Geo-based search (agar lat/lng hai)
@@ -50,6 +53,8 @@ const getCategoriesSmart = async (req, res) => {
         });
       }
     });
+
+    console.log("response" , allCategories);
 
     // 🔹 STEP 5: Final response prepare karo
     const response = allCategories.map((cat) => ({
