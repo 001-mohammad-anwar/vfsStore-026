@@ -177,6 +177,7 @@ const login = async (req, res) => {
       token: accesstoken,
       refreshToken: refreshToken,
       userId: userExist._id.toString(),
+      role: userExist.role,
       error: false,
       success: true,
     });

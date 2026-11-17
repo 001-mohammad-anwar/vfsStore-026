@@ -78,6 +78,7 @@ const login = async (req, res) => {
         message: "Login successful",
         token: await userExist.generateToken(),
         userId: userExist._id.toString(),
+        role: userExist.role,
       });
   
     } catch (error) {
