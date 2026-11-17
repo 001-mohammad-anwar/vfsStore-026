@@ -79,6 +79,7 @@ const login = async (req, res) => {
         token: await userExist.generateToken(),
         userId: userExist._id.toString(),
         role: userExist.role,
+        isAdmin: userExist.isAdmin,
       });
   
     } catch (error) {

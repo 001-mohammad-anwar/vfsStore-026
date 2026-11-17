@@ -178,6 +178,7 @@ const login = async (req, res) => {
       refreshToken: refreshToken,
       userId: userExist._id.toString(),
       role: userExist.role,
+      isAdmin: userExist.isAdmin,
       error: false,
       success: true,
     });
