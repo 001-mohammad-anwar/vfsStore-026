@@ -17,7 +17,7 @@ const admin = async (req, res, next) => {
         const user = await UserModel.findById(userId);
       //   console.log("user",user)
 
-        if (!user || user.role !== 'Admin') {
+        if (!user || user.role !== 'ADMIN') {
             return res.status(403).json({
                 message: "Permission denied",
                 error: true,
